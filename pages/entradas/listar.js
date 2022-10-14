@@ -26,7 +26,7 @@ function Entradas({ posts }) {
   return (
     <ul>{posts.map((post) => (
       <li key={post.id}>
-        <Link href='/entradas/1'>
+        <Link href={`/entradas/${encodeURIComponent(post.id)}`}>
           <a>{post.title.rendered}</a>
         </Link>
       </li>
@@ -34,7 +34,6 @@ function Entradas({ posts }) {
     </ul>
   )
 }
-
 // This function gets called at build time
 export async function getStaticProps() {
   // Call an external API endpoint to get posts

@@ -1,32 +1,30 @@
 //https://raw.githubusercontent.com/DieterPreuss/Tarea2-Gestion_ContenidosDB/main/db_proyectos.json
 
-function Proyectos({ posts }) {
+function Proyectos({ proyecto }) {
   //getStaticProps();
   console.log("proyectos: ");
-  console.log(posts);
-  console.log(posts.length);
+  console.log(proyecto);
+  console.log(proyecto.length);
 
   return (
-    <h1>Hola</h1>
-  )
-}
-/*
-<ul>{proyecto.map((proyecto) => (
-      <li key={proyecto.id}>{proyecto.title}</li>
+    <ul>{proyecto.map((proyecto) => (
+      <li key={proyecto.id}>{proyecto.title.rendered}</li>
     ))}
     </ul>
-*/
+  )
+}
+
 export async function getStaticProps() {
 
-  const res = await fetch('https://raw.githubusercontent.com/DieterPreuss/Tarea2-Gestion_ContenidosDB/main/db_entradas.json')
+  const res = await fetch('https://raw.githubusercontent.com/DieterPreuss/Tarea2-Gestion_ContenidosDB/main/db_proyectos.json')
 
   //http://localhost/Miwordpress/wp-json/wp/v2/proyecto
-  const posts = await res.json()
-  console.log(posts);
+  const proyecto = await res.json()
+  console.log(proyecto);
 
   return {
     props: {
-      posts
+      proyecto
     },
   }
 }
