@@ -1,9 +1,10 @@
 import { useRouter } from 'next/router'
 
-function Post({ posts }) {
-  const router = useRouter()
-  const { id } = router.query
-  const datos = posts.find((m) => m.id === { id });
+function Post({ post }) {
+  //const router = useRouter()
+  //const { id } = router.query
+  //const datos = paths.find((m) => m.id === { id });
+  const datos = post;
 
   return (
     <div>
@@ -29,11 +30,57 @@ export async function getStaticPaths() {
   const posts = await res.json()
   console.log(posts);
 
-  return {
+  const paths = posts.map((post) => ({
+    params: { id: post.id.toString() },
+  }))
+
+  /*return {
     props: {
       posts
     },
-  }
+  }*/
+  return { paths, fallback: false }
 }
 
-export default Post
+// This also gets called at build time
+export async function getStaticProps({ params }) {
+
+  const res = await fetch('https://raw.githubusercontent.com/DieterPreuss/Tarea2-Gestion_ContenidosDB/main/db_entradas.json')
+  const posts = await res.json()
+  
+  var idPost = "";
+    const post = posts.find((m) => m.id === { idPost });
+
+    // Pass post data to the page via props
+    return { props: { post } }
+  }
+
+  export default Post
+
+
+/*
+export async function getStaticProps({ params }) {
+  // params contains the post `id`.
+  // If the route is like /posts/1, then params.id is 1
+  const res = await fetch(`https://.../posts/${params.id}`)
+  const post = await res.json()
+
+  // Pass post data to the page via props
+  return { props: { post } }
+}
+
+export async function getStaticPaths() {
+  // Call an external API endpoint to get posts
+  const res = await fetch('https://.../posts')
+  const posts = await res.json()
+
+  // Get the paths we want to pre-render based on posts
+  const paths = posts.map((post) => ({
+    params: { id: post.id },
+  }))
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: false } means other routes should 404.
+  return { paths, fallback: false }
+}
+    */
