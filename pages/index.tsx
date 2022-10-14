@@ -3,7 +3,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Entradas from './entradas.js'
+import Entradas from './entradas/listar.js'
+import Proyectos from './proyectos.js'
 
 const Home: NextPage = () => {
   return (
@@ -70,7 +71,7 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-)
+  )
 }
 
 export default Home
