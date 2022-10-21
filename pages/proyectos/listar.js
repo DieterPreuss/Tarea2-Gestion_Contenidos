@@ -1,3 +1,4 @@
+import Link from 'next/link'
 //https://raw.githubusercontent.com/DieterPreuss/Tarea2-Gestion_ContenidosDB/main/db_proyectos.json
 
 function Proyectos({ proyecto }) {
@@ -6,9 +7,13 @@ function Proyectos({ proyecto }) {
   console.log(proyecto);
   console.log(proyecto.length);
 
-  return (
+   return (
     <ul>{proyecto.map((proyecto) => (
-      <li key={proyecto.id}>{proyecto.title.rendered}</li>
+      <li key={proyecto.id}>
+        <Link href={`/proyectos/${encodeURIComponent(proyecto.id)}`}>
+          <a>{proyecto.title.rendered}</a>
+        </Link>
+      </li>
     ))}
     </ul>
   )
@@ -16,7 +21,7 @@ function Proyectos({ proyecto }) {
 
 export async function getStaticProps() {
 
-  const res = await fetch('https://raw.githubusercontent.com/DieterPreuss/Tarea2-Gestion_ContenidosDB/main/db_proyectos.json')
+  const res = await fetch('https://Tarea2-GC-WordPress.dieterpreuss.repl.co/wp-json/wp/v2/proyecto')
 
   //http://localhost/Miwordpress/wp-json/wp/v2/proyecto
   const proyecto = await res.json()

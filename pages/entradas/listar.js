@@ -38,7 +38,7 @@ function Entradas({ posts }) {
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
   //const res = await fetch('https://raw.githubusercontent.com/DieterPreuss/Tarea2GestionContenidosDB/main/db.json')
-  const res = await fetch('https://raw.githubusercontent.com/DieterPreuss/Tarea2-Gestion_ContenidosDB/main/db_entradas.json')
+  const res = await fetch('https://Tarea2-GC-WordPress.dieterpreuss.repl.co/wp-json/wp/v2/posts')
   //console.log(res);
 
   //http://localhost/Miwordpress/wp-json/wp/v2/posts
