@@ -27,7 +27,7 @@ function Entradas({ posts }) {
     <ul>{posts.map((post) => (
       <li key={post.id}>
         <Link href={`/entradas/${encodeURIComponent(post.id)}`}>
-          <a>{post.title.rendered}</a>
+          <a>Titulo: {post.title.rendered} ({post.date})</a>
         </Link>
       </li>
     ))}

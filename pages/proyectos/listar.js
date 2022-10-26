@@ -7,11 +7,11 @@ function Proyectos({ proyecto }) {
   console.log(proyecto);
   console.log(proyecto.length);
 
-   return (
+  return (
     <ul>{proyecto.map((proyecto) => (
       <li key={proyecto.id}>
         <Link href={`/proyectos/${encodeURIComponent(proyecto.id)}`}>
-          <a>{proyecto.title.rendered}</a>
+          <a>Nombre: {proyecto.title.rendered} ({proyecto.meta.empresa})</a>
         </Link>
       </li>
     ))}

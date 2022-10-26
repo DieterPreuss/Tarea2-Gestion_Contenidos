@@ -11,16 +11,13 @@ export default function Proyecto({ post, imagen }) {
   if(imagen==null){
     return (
     <div>
-      <h1>Entrada {datos.id}</h1>
+      <h1>Proyecto {datos.id}</h1>
       <p>Titulo: {datos.title.rendered}</p>
-      <p>Autor: {datos.author}</p>
-      <p>Fecha: {datos.date}</p>
-      <p>Detalles de Entrada: {datos.about}</p>
+      <p>Empresa: {datos.meta.empresa}</p>
+      <p>Fecha: {datos.meta.fecha}</p>
+      <p>Detalles de Proyecto: {datos.about}</p>
       <p>Contenido:</p>
       <div className="product-des" dangerouslySetInnerHTML={{ __html: datos.content.rendered }}></div>
-      <p>Categoría: {datos.categories}</p>
-      <p>Tags: {datos.tags}</p>
-
     </div>
   )
   }else{
